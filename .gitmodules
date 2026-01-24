@@ -1,0 +1,90 @@
+[submodule "wordlists/SecLists"]
+	path = wordlists/SecLists
+	url = https://github.com/danielmiessler/SecLists
+[submodule "wordlists/PayloadsAllTheThings"]
+	path = wordlists/PayloadsAllTheThings
+	url = https://github.com/swisskyrepo/PayloadsAllTheThings
+[submodule "tools/recon/subfinder"]
+	path = tools/recon/subfinder
+	url = https://github.com/projectdiscovery/subfinder
+[submodule "tools/recon/amass"]
+	path = tools/recon/amass
+	url = https://github.com/owasp-amass/amass
+[submodule "tools/recon/httpx"]
+	path = tools/recon/httpx
+	url = https://github.com/projectdiscovery/httpx
+[submodule "tools/recon/nuclei"]
+	path = tools/recon/nuclei
+	url = https://github.com/projectdiscovery/nuclei
+[submodule "tools/recon/naabu"]
+	path = tools/recon/naabu
+	url = https://github.com/projectdiscovery/naabu
+[submodule "tools/recon/gau"]
+	path = tools/recon/gau
+	url = https://github.com/lc/gau
+[submodule "tools/web/ffuf"]
+	path = tools/web/ffuf
+	url = https://github.com/ffuf/ffuf
+[submodule "tools/web/sqlmap"]
+	path = tools/web/sqlmap
+	url = https://github.com/sqlmapproject/sqlmap
+[submodule "tools/web/XSStrike"]
+	path = tools/web/XSStrike
+	url = https://github.com/s0md3v/XSStrike
+[submodule "tools/web/SSRFmap"]
+	path = tools/web/SSRFmap
+	url = https://github.com/swisskyrepo/SSRFmap
+[submodule "tools/web/XXEinjector"]
+	path = tools/web/XXEinjector
+	url = https://github.com/enjoiz/XXEinjector
+[submodule "tools/web/jwt_tool"]
+	path = tools/web/jwt_tool
+	url = https://github.com/ticarpi/jwt_tool
+[submodule "tools/post/PEASS-ng"]
+	path = tools/post/PEASS-ng
+	url = https://github.com/carlospolop/PEASS-ng
+[submodule "tools/post/PowerSploit"]
+	path = tools/post/PowerSploit
+	url = https://github.com/PowerShellMafia/PowerSploit
+[submodule "tools/post/mimikatz"]
+	path = tools/post/mimikatz
+	url = https://github.com/gentilkiwi/mimikatz
+[submodule "tools/post/bettercap"]
+	path = tools/post/bettercap
+	url = https://github.com/bettercap/bettercap
+[submodule "tools/exploitation/AutoRecon"]
+	path = tools/exploitation/AutoRecon
+	url = https://github.com/Tib3rius/AutoRecon
+[submodule "tools/exploitation/exploitdb"]
+	path = tools/exploitation/exploitdb
+	url = https://github.com/offensive-security/exploitdb
+[submodule "tools/forensics/volatility3"]
+	path = tools/forensics/volatility3
+	url = https://github.com/volatilityfoundation/volatility3
+[submodule "tools/forensics/plaso"]
+	path = tools/forensics/plaso
+	url = https://github.com/log2timeline/plaso
+[submodule "tools/forensics/loki"]
+	path = tools/forensics/loki
+	url = https://github.com/Neo23x0/Loki
+[submodule "tools/forensics/sigma"]
+	path = tools/forensics/sigma
+	url = https://github.com/Neo23x0/sigma
+[submodule "tools/cloud/ScoutSuite"]
+	path = tools/cloud/ScoutSuite
+	url = https://github.com/nccgroup/ScoutSuite
+[submodule "tools/cloud/pacu"]
+	path = tools/cloud/pacu
+	url = https://github.com/RhinoSecurityLabs/pacu
+[submodule "tools/cloud/prowler"]
+	path = tools/cloud/prowler
+	url = https://github.com/prowler-cloud/prowler
+[submodule "tools/crypto/pwntools"]
+	path = tools/crypto/pwntools
+	url = https://github.com/Gallopsled/pwntools
+[submodule "tools/cross/impacket"]
+	path = tools/cross/impacket
+	url = https://github.com/fortra/impacket
+[submodule "tools/cross/static-binaries"]
+	path = tools/cross/static-binaries
+	url = https://github.com/andrew-d/static-binaries
