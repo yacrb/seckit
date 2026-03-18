@@ -25,16 +25,16 @@
 *.vhdx
 *.iso
 
-# Submodule contents tracked separately
-wordlists/SecLists/
-wordlists/PayloadsAllTheThings/
-tools/linux/volatility3/
-tools/cross/impacket/
-
 # Windows tool binaries (re-download on new machine)
 tools/windows/**/*.exe
 tools/windows/**/*.dll
 tools/windows/**/bin/
+
+# Secrets / local config
+*.key
+*.secret
+.env
+mcp/configs/*-local.json
 
 # OS noise
 .DS_Store
@@ -46,3 +46,15 @@ desktop.ini
 vol-output-*/
 pcap-triage-*/
 foremost-out/
+linux-triage-*/
+port-scan-*/
+subdomain-enum-*/
+dir-bust-*/
+hash-crack-*/
+privesc-check-*/
+sqli-test-*/
+fuzz-params-*/
+
+# Bootstrap artifacts
+.bootstrap-build/
+.bootstrap-logs/

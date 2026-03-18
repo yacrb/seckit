@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "web-search": {
+      "command": "__WEB_SEARCH_SERVER_COMMAND__",
+      "args": [
+        "__WEB_SEARCH_SERVER_ARG1__"
+      ],
+      "env": {}
+    }
+  }
+}
