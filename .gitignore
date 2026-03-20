@@ -29,6 +29,7 @@
 tools/windows/**/*.exe
 tools/windows/**/*.dll
 tools/windows/**/bin/
+tools/windows/VolatilityWorkbench/symbols/
 
 # Secrets / local config
 *.key

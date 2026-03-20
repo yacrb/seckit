@@ -54,13 +54,11 @@ seckit/
 │   ├── crypto/
 │   ├── exploitation/
 │   ├── forensics/
-│   ├── malware/
-│   ├── network/
 │   ├── post/
 │   ├── recon/
 │   ├── web/
 │   ├── windows/
-│   └── wireless/
+│   └── ...
 └── wordlists/
 ```
 
@@ -173,6 +171,8 @@ Still expected to live under `tools/windows/`:
 - `NetworkMiner`
 
 These are intentionally left as user-managed downloads because vendor packaging and licensing change often.
+
+Large Windows symbol packs are no longer tracked in git. If you need them, fetch them on demand for the specific case you are working.
 
 ## Manual Follow-Ups
 
