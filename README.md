@@ -10,7 +10,7 @@ cd seckit
 ./bootstrap.sh
 ```
 
-One clone, one bootstrap, and the box is ready with curated tooling, launcher shortcuts, wordlists, wrappers, cheatsheets, and an MCP scaffold.
+One clone, one bootstrap, and the box is ready with curated tooling, launcher shortcuts, wordlists, wrappers, and cheatsheets.
 
 ## Layout
 
@@ -18,7 +18,6 @@ One clone, one bootstrap, and the box is ready with curated tooling, launcher sh
 seckit/
 ├── bootstrap.sh
 ├── cheatsheets/
-├── mcp/
 ├── scripts/
 │   ├── crypto/
 │   ├── ctf/
@@ -196,19 +195,7 @@ Still expected to live under `tools/windows/`:
 
 These are intentionally left as user-managed downloads because vendor packaging and licensing change often.
 
-## MCP Scaffold
-
-`mcp/` contains:
-
-- `README.md`
-- `servers.json`
-- `setup.sh`
-- `configs/*.json`
-
-Use `mcp/setup.sh` to build local, untracked Claude Desktop configs with your API keys instead of storing secrets in the repo.
-
 ## Manual Follow-Ups
 
 - Download or refresh Windows-only GUI binaries in `tools/windows/`
-- Add API keys locally before enabling GitHub / Shodan / VirusTotal MCP servers
 - If your shell does not include `~/bin`, add it to `.bashrc`, `.zshrc`, or your profile of choice

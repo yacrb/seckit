@@ -34,7 +34,6 @@ tools/windows/**/bin/
 *.key
 *.secret
 .env
-mcp/configs/*-local.json
 
 # OS noise
 .DS_Store

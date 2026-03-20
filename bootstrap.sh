@@ -484,7 +484,6 @@ update_nuclei_templates() {
 print_manual_steps() {
     printf '\n[manual] Still user-managed by design:\n'
     printf '  - tools/windows/* GUI bundles remain manual downloads unless you add your own fetch automation.\n'
-    printf '  - MCP API keys belong in user-local config only; use mcp/setup.sh instead of editing tracked files.\n'
     printf '  - If a launcher was skipped because a file already existed in %s, the bootstrap intentionally left it alone.\n' "$BIN_DIR"
 }
 
