@@ -1,8 +1,21 @@
 # SecKit
 
-SecKit is a self-contained, auto-bootstrapping offensive + defensive toolkit repo for Kali, Ubuntu 22+, REMnux, and WSL2 workflows.
+SecKit is a workspace-first security kit for CTFs, pentests, and day-to-day lab work.
 
-## Goal
+The goal is simple: keep one VS Code folder open and always have the tools, wrappers, wordlists, and cheatsheets you actually reach for.
+
+## Vision
+
+SecKit is meant to be:
+
+- ready to open in VS Code
+- practical instead of over-engineered
+- fast to bootstrap on Kali, Ubuntu 22+, REMnux, and WSL2
+- easy to keep current as upstream tools move
+
+This repo is the working kit, not just a catalog.
+
+## Fast Start
 
 ```bash
 git clone --recurse-submodules <repo>
@@ -10,12 +23,21 @@ cd seckit
 ./bootstrap.sh
 ```
 
-One clone, one bootstrap, and the box is ready with curated tooling, launcher shortcuts, wordlists, wrappers, and cheatsheets.
+After bootstrap, keep this repo open in VS Code and use it as the default workspace for:
+
+- recon
+- web testing
+- privilege escalation
+- forensics / IR
+- CTF helper work
+
+For the day-to-day command map, see [DAILY-USE.md](/mnt/w/security/seckit/DAILY-USE.md).
 
 ## Layout
 
 ```text
 seckit/
+├── .vscode/
 ├── bootstrap.sh
 ├── cheatsheets/
 ├── scripts/
@@ -42,147 +64,104 @@ seckit/
 └── wordlists/
 ```
 
-`tools/windows/` remains the home for Windows-only GUI suites. Automation-managed offensive and defensive repos now live in capability-focused categories.
+`tools/windows/` remains the place for Windows-only GUI suites. The rest of the toolkit lives in capability-focused categories so the repo stays predictable.
+
+## What You Get
+
+### Curated Tool Mirrors
+
+Tracked external repos live as submodules and are grouped by use case:
+
+- wordlists: `SecLists`, `PayloadsAllTheThings`
+- recon: `subfinder`, `amass`, `httpx`, `nuclei`, `naabu`, `gau`
+- web: `ffuf`, `GraphQLmap`, `sqlmap`, `XSStrike`, `SSRFmap`, `XXEinjector`, `jwt_tool`
+- post / privesc: `PEASS-ng`, `PowerSploit`, `mimikatz`, `bettercap`
+- exploitation: `AutoRecon`, `exploitdb`
+- forensics: `volatility3`, `plaso`, `loki`, `sigma`
+- cloud: `ScoutSuite`, `pacu`, `prowler`
+- crypto / cross-platform: `pwntools`, `impacket`, `static-binaries`
+
+### Wrapper Scripts
+
+Repo-local wrappers give you a faster path for common jobs:
+
+- recon: `subdomain-enum.sh`, `port-scan.sh`, `dir-bust.sh`, `web-fuzz.sh`
+- web: `sqli-test.sh`, `fuzz-params.sh`
+- post: `privesc-check.sh`
+- forensics: `vol-autopsy.sh`, `pcap-triage.sh`, `linux-triage.sh`
+- crypto / CTF: `hash-crack.sh`, `steg-check.sh`
+
+### Cheatsheets
+
+Built-in notes stay in the same workspace:
+
+- `active-directory.md`
+- `cloud-aws.md`
+- `ctf-quick-ref.md`
+- `linux-forensics.md`
+- `log-analysis.md`
+- `network-attacks.md`
+- `privesc-linux.md`
+- `privesc-windows.md`
+- `reverse-shells.md`
+- `volatility.md`
+- `windows-forensics.md`
+- `wireshark-filters.md`
 
 ## Bootstrap
 
-`bootstrap.sh` is idempotent and non-destructive:
+`bootstrap.sh` is idempotent and non-destructive. It:
 
 - syncs and initializes git submodules
 - installs apt and pip dependencies
 - builds or wires supported tools into `~/bin` by default
+- installs local wrappers and launcher links
 - keeps third-party tool mirrors on tracked submodule branches
 - refreshes `nuclei` templates when the launcher is available
-- prints installed, skipped, failed, and manual-follow-up sections at the end
 
-### Typical usage
+Typical usage:
 
 ```bash
-git clone --recurse-submodules <repo>
-cd seckit
-chmod +x bootstrap.sh
 ./bootstrap.sh
 ```
 
-### Notes
+Notes:
 
-- Default launcher directory: `~/bin`
-- Override launcher directory: `SECKIT_BIN_DIR=/usr/local/bin ./bootstrap.sh`
-- Scheduled GitHub Actions can refresh submodule pointers from upstream tracked branches
-- Wordlist root inside WSL: `/mnt/w/security/seckit/wordlists/`
-- Existing files in the launcher directory are preserved rather than overwritten
+- default launcher directory: `~/bin`
+- override launcher directory: `SECKIT_BIN_DIR=/usr/local/bin ./bootstrap.sh`
+- wordlist root in this workspace: `/mnt/w/security/seckit/wordlists/`
+- existing launcher files are preserved rather than overwritten
 
-## Registered Submodules
+## VS Code Workflow
 
-### Wordlists
+The repo now includes a light workspace setup in `.vscode/`:
 
-- `wordlists/SecLists`
-- `wordlists/PayloadsAllTheThings`
+- recommended extensions for shell, markdown, and yaml work
+- tasks for bootstrap, submodule sync, upstream refresh, and nuclei template refresh
+- search / watcher exclusions for generated output noise
 
-### Recon
+That keeps the repo more usable as a daily driver instead of just a storage tree.
 
-- `tools/recon/subfinder`
-- `tools/recon/amass`
-- `tools/recon/httpx`
-- `tools/recon/nuclei`
-- `tools/recon/naabu`
-- `tools/recon/gau`
+## Updating
 
-### Web
+SecKit keeps upstream tool repos as submodules with tracked branches.
 
-- `tools/web/ffuf`
-- `tools/web/GraphQLmap`
-- `tools/web/sqlmap`
-- `tools/web/XSStrike`
-- `tools/web/SSRFmap`
-- `tools/web/XXEinjector`
-- `tools/web/jwt_tool`
-
-### Post / Privilege Escalation
-
-- `tools/post/PEASS-ng`
-- `tools/post/PowerSploit`
-- `tools/post/mimikatz`
-- `tools/post/bettercap`
-
-### Exploitation
-
-- `tools/exploitation/AutoRecon`
-- `tools/exploitation/exploitdb`
-
-### Forensics
-
-- `tools/forensics/volatility3`
-- `tools/forensics/plaso`
-- `tools/forensics/loki`
-- `tools/forensics/sigma`
-
-### Cloud
-
-- `tools/cloud/ScoutSuite`
-- `tools/cloud/pacu`
-- `tools/cloud/prowler`
-
-### Crypto / Cross-Platform
-
-- `tools/crypto/pwntools`
-- `tools/cross/impacket`
-- `tools/cross/static-binaries`
-
-## Script Wrappers
-
-### Recon
+Local refresh:
 
 ```bash
-subdomain-enum.sh -d example.com
-port-scan.sh -t 10.10.10.10
-dir-bust.sh -u https://target.tld -m dirs
-web-fuzz.sh https://target.tld api
+git pull
+git submodule sync --recursive
+git submodule update --init --recursive
 ```
 
-### Web
+Manual upstream refresh of tracked tool mirrors:
 
 ```bash
-sqli-test.sh -u 'https://target.tld/item.php?id=1'
-fuzz-params.sh -u https://target.tld/app --discover
-fuzz-params.sh -u https://target.tld/app --param redirect --payload-set open-redirect
+git submodule sync --recursive
+git submodule update --init --remote --recursive
 ```
 
-### Forensics / IR
-
-```bash
-vol-autopsy.sh dump.mem
-pcap-triage.sh capture.pcap
-linux-triage.sh
-```
-
-### Post / Crypto / CTF
-
-```bash
-privesc-check.sh
-hash-crack.sh -f hashes.txt
-steg-check.sh suspicious.png
-```
-
-## Cheatsheets
-
-Existing:
-
-- `volatility.md`
-- `wireshark-filters.md`
-- `windows-forensics.md`
-- `linux-forensics.md`
-- `log-analysis.md`
-- `ctf-quick-ref.md`
-
-Added:
-
-- `cloud-aws.md`
-- `active-directory.md`
-- `privesc-linux.md`
-- `privesc-windows.md`
-- `reverse-shells.md`
-- `network-attacks.md`
+The repo also includes a scheduled GitHub Actions workflow to refresh submodule pointers automatically.
 
 ## Windows Tooling
 
@@ -197,5 +176,5 @@ These are intentionally left as user-managed downloads because vendor packaging 
 
 ## Manual Follow-Ups
 
-- Download or refresh Windows-only GUI binaries in `tools/windows/`
-- If your shell does not include `~/bin`, add it to `.bashrc`, `.zshrc`, or your profile of choice
+- download or refresh Windows-only GUI binaries in `tools/windows/`
+- if your shell does not include `~/bin`, add it to `.bashrc`, `.zshrc`, or your profile of choice

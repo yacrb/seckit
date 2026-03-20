@@ -1,0 +1,22 @@
+{
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "files.exclude": {
+    "**/.bootstrap-build": true,
+    "**/.bootstrap-logs": true
+  },
+  "search.exclude": {
+    "**/.bootstrap-build": true,
+    "**/.bootstrap-logs": true,
+    "**/dir-bust-*": true,
+    "**/fuzz-params-*": true,
+    "**/hash-crack-*": true,
+    "**/linux-triage-*": true,
+    "**/pcap-triage-*": true,
+    "**/port-scan-*": true,
+    "**/privesc-check-*": true,
+    "**/sqli-test-*": true,
+    "**/subdomain-enum-*": true,
+    "**/vol-output-*": true,
+    "tools/windows/VolatilityWorkbench/symbols": true
+  }
+}

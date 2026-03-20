@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SecKit: Bootstrap",
+      "type": "shell",
+      "command": "./bootstrap.sh",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "SecKit: Sync Submodules",
+      "type": "shell",
+      "command": "git submodule sync --recursive && git submodule update --init --recursive",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "SecKit: Update Tracked Tool Mirrors",
+      "type": "shell",
+      "command": "git submodule sync --recursive && git submodule update --init --remote --recursive",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "SecKit: Refresh Nuclei Templates",
+      "type": "shell",
+      "command": "bash -lc 'if command -v nuclei >/dev/null 2>&1; then nuclei -update-templates; else echo \"nuclei launcher not found; run bootstrap.sh first.\"; fi'",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    }
+  ]
+}
