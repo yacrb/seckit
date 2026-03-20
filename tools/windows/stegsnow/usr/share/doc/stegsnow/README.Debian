@@ -1,0 +1,8 @@
+stegsnow for Debian
+-------------------
+
+The upstream binary's name is "snow". This has been renamed to
+"stegsnow" to reflect other similar tools, like "steghide". It
+also helps shell completion with 'steg<TAB>'.
+
+ -- Jari Aalto <jari.aalto@cante.net>, Fri, 18 Dec 2009 21:07:23 +0200
