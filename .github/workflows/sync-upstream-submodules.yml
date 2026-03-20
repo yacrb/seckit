@@ -1,0 +1,45 @@
+name: Sync Upstream Submodules
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-upstream-submodules
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync tracked submodules to their upstream branches
+        run: |
+          git submodule sync --recursive
+          git submodule update --init --remote --recursive
+
+      - name: Commit and push updated pointers
+        run: |
+          if git diff --quiet --submodule=short; then
+            echo "No upstream submodule updates detected."
+            exit 0
+          fi
+
+          git add .gitmodules .
+          git commit -m "chore: sync upstream submodules"
+          git push origin HEAD:${GITHUB_REF_NAME}

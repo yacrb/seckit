@@ -1,90 +1,124 @@
 [submodule "wordlists/SecLists"]
 	path = wordlists/SecLists
 	url = https://github.com/danielmiessler/SecLists
+	branch = master
 [submodule "wordlists/PayloadsAllTheThings"]
 	path = wordlists/PayloadsAllTheThings
 	url = https://github.com/swisskyrepo/PayloadsAllTheThings
+	branch = master
 [submodule "tools/recon/subfinder"]
 	path = tools/recon/subfinder
 	url = https://github.com/projectdiscovery/subfinder
+	branch = dev
 [submodule "tools/recon/amass"]
 	path = tools/recon/amass
 	url = https://github.com/owasp-amass/amass
+	branch = main
 [submodule "tools/recon/httpx"]
 	path = tools/recon/httpx
 	url = https://github.com/projectdiscovery/httpx
+	branch = dev
 [submodule "tools/recon/nuclei"]
 	path = tools/recon/nuclei
 	url = https://github.com/projectdiscovery/nuclei
+	branch = dev
 [submodule "tools/recon/naabu"]
 	path = tools/recon/naabu
 	url = https://github.com/projectdiscovery/naabu
+	branch = dev
 [submodule "tools/recon/gau"]
 	path = tools/recon/gau
 	url = https://github.com/lc/gau
+	branch = master
 [submodule "tools/web/ffuf"]
 	path = tools/web/ffuf
 	url = https://github.com/ffuf/ffuf
+	branch = master
+[submodule "tools/web/GraphQLmap"]
+	path = tools/web/GraphQLmap
+	url = https://github.com/swisskyrepo/GraphQLmap.git
+	branch = master
 [submodule "tools/web/sqlmap"]
 	path = tools/web/sqlmap
 	url = https://github.com/sqlmapproject/sqlmap
+	branch = master
 [submodule "tools/web/XSStrike"]
 	path = tools/web/XSStrike
 	url = https://github.com/s0md3v/XSStrike
+	branch = master
 [submodule "tools/web/SSRFmap"]
 	path = tools/web/SSRFmap
 	url = https://github.com/swisskyrepo/SSRFmap
+	branch = master
 [submodule "tools/web/XXEinjector"]
 	path = tools/web/XXEinjector
 	url = https://github.com/enjoiz/XXEinjector
+	branch = master
 [submodule "tools/web/jwt_tool"]
 	path = tools/web/jwt_tool
 	url = https://github.com/ticarpi/jwt_tool
+	branch = master
 [submodule "tools/post/PEASS-ng"]
 	path = tools/post/PEASS-ng
 	url = https://github.com/carlospolop/PEASS-ng
+	branch = master
 [submodule "tools/post/PowerSploit"]
 	path = tools/post/PowerSploit
 	url = https://github.com/PowerShellMafia/PowerSploit
+	branch = master
 [submodule "tools/post/mimikatz"]
 	path = tools/post/mimikatz
 	url = https://github.com/gentilkiwi/mimikatz
+	branch = master
 [submodule "tools/post/bettercap"]
 	path = tools/post/bettercap
 	url = https://github.com/bettercap/bettercap
+	branch = master
 [submodule "tools/exploitation/AutoRecon"]
 	path = tools/exploitation/AutoRecon
 	url = https://github.com/Tib3rius/AutoRecon
+	branch = main
 [submodule "tools/exploitation/exploitdb"]
 	path = tools/exploitation/exploitdb
 	url = https://github.com/offensive-security/exploitdb
+	branch = master
 [submodule "tools/forensics/volatility3"]
 	path = tools/forensics/volatility3
 	url = https://github.com/volatilityfoundation/volatility3
+	branch = develop
 [submodule "tools/forensics/plaso"]
 	path = tools/forensics/plaso
 	url = https://github.com/log2timeline/plaso
+	branch = main
 [submodule "tools/forensics/loki"]
 	path = tools/forensics/loki
 	url = https://github.com/Neo23x0/Loki
+	branch = master
 [submodule "tools/forensics/sigma"]
 	path = tools/forensics/sigma
 	url = https://github.com/Neo23x0/sigma
+	branch = master
 [submodule "tools/cloud/ScoutSuite"]
 	path = tools/cloud/ScoutSuite
 	url = https://github.com/nccgroup/ScoutSuite
+	branch = master
 [submodule "tools/cloud/pacu"]
 	path = tools/cloud/pacu
 	url = https://github.com/RhinoSecurityLabs/pacu
+	branch = master
 [submodule "tools/cloud/prowler"]
 	path = tools/cloud/prowler
 	url = https://github.com/prowler-cloud/prowler
+	branch = master
 [submodule "tools/crypto/pwntools"]
 	path = tools/crypto/pwntools
 	url = https://github.com/Gallopsled/pwntools
+	branch = dev
 [submodule "tools/cross/impacket"]
 	path = tools/cross/impacket
 	url = https://github.com/fortra/impacket
+	branch = master
 [submodule "tools/cross/static-binaries"]
 	path = tools/cross/static-binaries
 	url = https://github.com/andrew-d/static-binaries
+	branch = master

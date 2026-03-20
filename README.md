@@ -52,7 +52,7 @@ seckit/
 - syncs and initializes git submodules
 - installs apt and pip dependencies
 - builds or wires supported tools into `~/bin` by default
-- clones optional non-submodule repos when missing
+- keeps third-party tool mirrors on tracked submodule branches
 - refreshes `nuclei` templates when the launcher is available
 - prints installed, skipped, failed, and manual-follow-up sections at the end
 
@@ -69,6 +69,7 @@ chmod +x bootstrap.sh
 
 - Default launcher directory: `~/bin`
 - Override launcher directory: `SECKIT_BIN_DIR=/usr/local/bin ./bootstrap.sh`
+- Scheduled GitHub Actions can refresh submodule pointers from upstream tracked branches
 - Wordlist root inside WSL: `/mnt/w/security/seckit/wordlists/`
 - Existing files in the launcher directory are preserved rather than overwritten
 
@@ -91,6 +92,7 @@ chmod +x bootstrap.sh
 ### Web
 
 - `tools/web/ffuf`
+- `tools/web/GraphQLmap`
 - `tools/web/sqlmap`
 - `tools/web/XSStrike`
 - `tools/web/SSRFmap`

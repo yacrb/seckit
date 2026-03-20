@@ -395,29 +395,6 @@ sync_submodules() {
     fi
 }
 
-clone_optional_repo() {
-    local label="$1"
-    local repo_url="$2"
-    local repo_path="$3"
-
-    if [ -d "$repo_path/.git" ]; then
-        record_status skipped "$label" "repo already cloned"
-        return 0
-    fi
-
-    if [ -d "$repo_path" ] && [ -n "$(find "$repo_path" -mindepth 1 -maxdepth 1 -print -quit 2>/dev/null)" ]; then
-        record_status skipped "$label" "non-empty path preserved at $repo_path"
-        return 0
-    fi
-
-    mkdir -p "$(dirname "$repo_path")"
-    if run_logged "clone $label" git clone --depth 1 "$repo_url" "$repo_path"; then
-        record_status installed "$label" "cloned to $repo_path"
-    else
-        record_status failed "$label" "clone failed"
-    fi
-}
-
 install_core_packages() {
     install_apt_packages \
         git curl wget jq unzip zip tar ca-certificates build-essential pkg-config \
@@ -444,6 +421,7 @@ install_tool_launchers() {
     install_go_tool "bettercap" "$root/tools/post/bettercap" bettercap ./cmd/bettercap .
     install_go_remote_tool "dnsx" dnsx github.com/projectdiscovery/dnsx/cmd/dnsx@latest
 
+    install_python_package_tool "GraphQLmap" "$root/tools/web/GraphQLmap" "graphqlmap"
     install_python_script_tool "sqlmap" sqlmap "$root/tools/web/sqlmap" sqlmap.py
     install_python_script_tool "XSStrike" xsstrike "$root/tools/web/XSStrike" xsstrike.py requirements.txt
     install_python_script_tool "SSRFmap" ssrfmap "$root/tools/web/SSRFmap" ssrfmap.py requirements.txt
@@ -551,7 +529,6 @@ main() {
     ensure_bin_path_notice
 
     sync_submodules
-    clone_optional_repo "GraphQLmap" "https://github.com/swisskyrepo/GraphQLmap.git" "$SECKIT_ROOT/tools/cross/recon/graphqlmap"
     install_core_packages
     install_tool_launchers
     link_repo_scripts
