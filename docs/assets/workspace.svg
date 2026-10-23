@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="610" viewBox="0 0 1120 610" role="img" aria-labelledby="title desc">
+<title id="title">SecKit workspace boundaries</title><desc id="desc">Original bootstrap and wrappers connect separately licensed upstream tools and wordlists to local lab outputs. Read-only setup checks and syntax tests do not install or validate the whole toolkit.</desc>
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 9 4.5 0 9Z" fill="#35638d"/></marker></defs>
+<rect width="1120" height="610" rx="24" fill="#f6f9fc"/>
+<g font-family="Arial, sans-serif">
+<text x="40" y="53" font-size="30" font-weight="700" fill="#20374c">SecKit · a workspace around upstream tools</text>
+<text x="40" y="86" font-size="18" fill="#667b8e">Original automation, third-party sources and investigation output have separate roles.</text>
+<rect x="40" y="130" width="305" height="200" rx="15" fill="#e8f0f8" stroke="#bfd0e0"/>
+<rect x="407" y="130" width="305" height="200" rx="15" fill="#fff" stroke="#bfd0e0"/>
+<rect x="775" y="130" width="305" height="200" rx="15" fill="#fff" stroke="#bfd0e0"/>
+<path d="M345 230H402" fill="none" stroke="#35638d" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M712 230H770" fill="none" stroke="#35638d" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="60" y="173" font-size="22" font-weight="700" fill="#20374c">Repository-owned work</text>
+<text x="60" y="211" font-size="18" fill="#667b8e">Bootstrap and launcher helpers</text>
+<text x="60" y="242" font-size="18" fill="#667b8e">Workflow wrapper scripts</text>
+<text x="60" y="273" font-size="18" fill="#667b8e">Cheatsheets + VS Code tasks</text>
+<text x="427" y="173" font-size="22" font-weight="700" fill="#20374c">Upstream sources</text>
+<text x="427" y="211" font-size="18" fill="#667b8e">Tool and wordlist submodules</text>
+<text x="427" y="242" font-size="18" fill="#667b8e">apt / pip / Go dependencies</text>
+<text x="427" y="273" font-size="18" fill="#667b8e">Separate authors and licenses</text>
+<text x="795" y="173" font-size="22" font-weight="700" fill="#20374c">Local lab workflows</text>
+<text x="795" y="211" font-size="18" fill="#667b8e">User-selected inputs/targets</text>
+<text x="795" y="242" font-size="18" fill="#667b8e">Per-run output directories</text>
+<text x="795" y="273" font-size="18" fill="#667b8e">Evidence stays outside Git</text>
+<rect x="40" y="370" width="1040" height="100" rx="15" fill="#e8f0f8"/>
+<text x="60" y="407" font-size="22" font-weight="700" fill="#20374c">Read-only checks before installation</text>
+<text x="60" y="440" font-size="18" fill="#667b8e">--help / --check report setup information. CI checks syntax, permissions and harmless launcher behavior.</text>
+<text x="40" y="526" font-size="18" font-weight="700" fill="#20374c">A passing wrapper check does not validate every external tool.</text>
+<text x="40" y="558" font-size="17" fill="#667b8e">Full setup changes system packages. Upstream branches and selected dependencies continue to move.</text>
+</g></svg>

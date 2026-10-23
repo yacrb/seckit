@@ -1,6 +1,7 @@
 # Daily Use
 
-This is the fast path for using SecKit as your default VS Code security workspace.
+This is the command map for the SecKit workspace. Bootstrap installs launcher names
+without the `.sh` extension. The original files remain under `scripts/`.
 
 ## Start of Session
 
@@ -32,25 +33,25 @@ The folders worth pinning mentally are:
 Passive enum and live host probing:
 
 ```bash
-subdomain-enum.sh -d example.com
+subdomain-enum -d example.com
 ```
 
 Port scan:
 
 ```bash
-port-scan.sh -t 10.10.10.10
+port-scan -t 10.10.10.10
 ```
 
 Directory or file busting:
 
 ```bash
-dir-bust.sh -u https://target.tld -m dirs
+dir-bust -u https://target.tld -m dirs
 ```
 
 Web fuzzing shortcut:
 
 ```bash
-web-fuzz.sh https://target.tld api
+web-fuzz https://target.tld api
 ```
 
 ### Web
@@ -58,14 +59,14 @@ web-fuzz.sh https://target.tld api
 SQLi testing wrapper:
 
 ```bash
-sqli-test.sh -u 'https://target.tld/item.php?id=1'
+sqli-test -u 'https://target.tld/item.php?id=1'
 ```
 
 Parameter discovery and fuzzing:
 
 ```bash
-fuzz-params.sh -u https://target.tld/app --discover
-fuzz-params.sh -u https://target.tld/app --param redirect --payload-set open-redirect
+fuzz-params -u https://target.tld/app --discover
+fuzz-params -u https://target.tld/app --param redirect --payload-set open-redirect
 ```
 
 Useful tool repos already inside the workspace:
@@ -80,7 +81,7 @@ Useful tool repos already inside the workspace:
 ### Linux Privilege Escalation
 
 ```bash
-privesc-check.sh
+privesc-check
 ```
 
 Review first:
@@ -95,19 +96,19 @@ Review first:
 Volatility helper:
 
 ```bash
-vol-autopsy.sh dump.mem
+vol-autopsy dump.mem
 ```
 
 PCAP triage:
 
 ```bash
-pcap-triage.sh capture.pcap
+pcap-triage capture.pcap
 ```
 
 Linux host triage:
 
 ```bash
-linux-triage.sh
+linux-triage
 ```
 
 ### CTF Helpers
@@ -115,13 +116,13 @@ linux-triage.sh
 Hash cracking helper:
 
 ```bash
-hash-crack.sh -f hashes.txt
+hash-crack -f hashes.txt
 ```
 
 Stego helper:
 
 ```bash
-steg-check.sh suspicious.png
+steg-check suspicious.png
 ```
 
 Quick notes:

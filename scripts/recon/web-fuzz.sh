@@ -10,7 +10,10 @@
 #   params    — GET parameter fuzzing (append ?FUZZ to url)
 #   vhosts    — virtual host enumeration (set url to base domain)
 
-SECLIST="/mnt/w/security/seckit/wordlists/SecLists"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# shellcheck source=scripts/lib/common.sh
+source "$SCRIPT_DIR/../lib/common.sh"
+SECLIST="$SECLISTS_ROOT"
 
 declare -A LISTS=(
     ["dirs"]="$SECLIST/Discovery/Web-Content/raft-medium-directories.txt"
@@ -21,13 +24,13 @@ declare -A LISTS=(
     ["vhosts"]="$SECLIST/Discovery/DNS/subdomains-top1million-5000.txt"
 )
 
-URL=$1
+URL=${1:-}
 KEY=${2:-dirs}
-WORDLIST=${LISTS[$KEY]}
+WORDLIST=${LISTS[$KEY]:-}
 
 if [ -z "$URL" ]; then
     echo "Usage: $0 <url> [wordlist_key]"
-    echo "Keys: ${!LISTS[@]}"
+    echo "Keys: ${!LISTS[*]}"
     exit 1
 fi
 

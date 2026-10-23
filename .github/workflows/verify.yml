@@ -1,0 +1,32 @@
+name: Verify
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  shell:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Check shell syntax and ShellCheck errors
+        run: |
+          for script in bootstrap.sh scripts/*/*.sh tests/*.sh; do bash -n "$script"; done
+          shellcheck --severity=error bootstrap.sh scripts/*/*.sh tests/*.sh
+      - name: Check entry-point permissions and read-only help
+        run: |
+          test -x bootstrap.sh
+          for script in scripts/*/*.sh; do
+            case "$script" in scripts/lib/*) continue ;; esac
+            test -x "$script"
+          done
+          ./bootstrap.sh --help
+          test ! -e .bootstrap-build
+          test ! -e .bootstrap-logs
+      - name: Verify generated launcher behavior without installing tools
+        run: bash tests/bootstrap_helpers.sh

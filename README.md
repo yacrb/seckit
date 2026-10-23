@@ -1,180 +1,83 @@
 # SecKit
 
-SecKit is a workspace-first security kit for CTFs, pentests, and day-to-day lab work.
+A personal security workspace containing shell wrappers, cheatsheets, wordlists
+and pointers to third-party tools for lab work, pentesting and DFIR. The original
+work here is the workspace, bootstrap and helper scripts; upstream tools retain
+their own authorship and licenses.
 
-The goal is simple: keep one VS Code folder open and always have the tools, wrappers, wordlists, and cheatsheets you actually reach for.
+[Setup](#setup) · [Daily commands](DAILY-USE.md) · [Workspace design](#workspace-design) ·
+[Checks and limitations](docs/VERIFICATION.md)
 
-## Vision
+## Setup
 
-SecKit is meant to be:
+Use **Bash 4+** in an apt-based Linux lab environment. Bootstrap installs system
+packages, Python dependencies and user-local launchers; it is more than a folder
+initializer. Review it before running it on an existing workstation.
 
-- ready to open in VS Code
-- practical instead of over-engineered
-- fast to bootstrap on Kali, Ubuntu 22+, REMnux, and WSL2
-- easy to keep current as upstream tools move
-
-This repo is the working kit, not just a catalog.
-
-## Fast Start
-
-```bash
-git clone --recurse-submodules <repo>
+```sh
+git clone https://github.com/yacrb/seckit.git
 cd seckit
+./bootstrap.sh --help
+./bootstrap.sh --check
+```
+
+The check reports installed prerequisites and registered submodule state without
+installing packages or initializing submodules. When ready to install:
+
+```sh
 ./bootstrap.sh
 ```
 
-After bootstrap, keep this repo open in VS Code and use it as the default workspace for:
+Bootstrap initializes registered submodules and puts launchers in `~/bin` by
+default. Add that directory to your shell's PATH if necessary.
+`SECKIT_BIN_DIR` selects another launcher directory. Existing user-managed files
+and symlinks are preserved. Review the final failure summary; failed steps now
+produce a nonzero exit status.
 
-- recon
-- web testing
-- privilege escalation
-- forensics / IR
-- CTF helper work
+## Workspace design
 
-For the day-to-day command map, see [DAILY-USE.md](/mnt/w/security/seckit/DAILY-USE.md).
+![Original helpers, upstream sources and local outputs](docs/assets/workspace.svg)
 
-## Layout
+| Folder | Contents |
+|---|---|
+| `scripts/` | Original wrappers for common recon, web, DFIR and CTF workflows. |
+| `cheatsheets/` | Short command references and investigation notes. |
+| `tools/` | Upstream repositories, source pointers and manually managed bundles. |
+| `wordlists/` | Registered SecLists and PayloadsAllTheThings submodules. |
+| `.vscode/` | Workspace tasks, extension suggestions and search exclusions. |
 
-```text
-seckit/
-├── .vscode/
-├── bootstrap.sh
-├── cheatsheets/
-├── scripts/
-│   ├── crypto/
-│   ├── ctf/
-│   ├── forensics/
-│   ├── lib/
-│   ├── post/
-│   ├── recon/
-│   └── web/
-├── tools/
-│   ├── cloud/
-│   ├── cross/
-│   ├── crypto/
-│   ├── exploitation/
-│   ├── forensics/
-│   ├── post/
-│   ├── recon/
-│   ├── web/
-│   ├── windows/
-│   └── ...
-└── wordlists/
-```
+After bootstrap, launcher names omit `.sh`: `pcap-triage`, `linux-triage`,
+`subdomain-enum`, `port-scan` and `hash-crack`. To run a source file directly, use
+its full repository path, for example `./scripts/forensics/pcap-triage.sh`.
+The [daily-use guide](DAILY-USE.md) maps commands to workflows.
 
-`tools/windows/` remains the place for Windows-only GUI suites. The rest of the toolkit lives in capability-focused categories so the repo stays predictable.
+## Updates
 
-## What You Get
+Restore the submodule revisions recorded by this repository:
 
-### Curated Tool Mirrors
-
-Tracked external repos live as submodules and are grouped by use case:
-
-- wordlists: `SecLists`, `PayloadsAllTheThings`
-- recon: `subfinder`, `amass`, `httpx`, `nuclei`, `naabu`, `gau`
-- web: `ffuf`, `GraphQLmap`, `sqlmap`, `XSStrike`, `SSRFmap`, `XXEinjector`, `jwt_tool`
-- post / privesc: `PEASS-ng`, `PowerSploit`, `mimikatz`, `bettercap`
-- exploitation: `AutoRecon`, `exploitdb`
-- forensics: `volatility3`, `plaso`, `loki`, `sigma`
-- cloud: `ScoutSuite`, `pacu`, `prowler`
-- crypto / cross-platform: `pwntools`, `impacket`, `static-binaries`
-
-### Wrapper Scripts
-
-Repo-local wrappers give you a faster path for common jobs:
-
-- recon: `subdomain-enum.sh`, `port-scan.sh`, `dir-bust.sh`, `web-fuzz.sh`
-- web: `sqli-test.sh`, `fuzz-params.sh`
-- post: `privesc-check.sh`
-- forensics: `vol-autopsy.sh`, `pcap-triage.sh`, `linux-triage.sh`
-- crypto / CTF: `hash-crack.sh`, `steg-check.sh`
-
-### Cheatsheets
-
-Built-in notes stay in the same workspace:
-
-- `active-directory.md`
-- `cloud-aws.md`
-- `ctf-quick-ref.md`
-- `linux-forensics.md`
-- `log-analysis.md`
-- `network-attacks.md`
-- `privesc-linux.md`
-- `privesc-windows.md`
-- `reverse-shells.md`
-- `volatility.md`
-- `windows-forensics.md`
-- `wireshark-filters.md`
-
-## Bootstrap
-
-`bootstrap.sh` is idempotent and non-destructive. It:
-
-- syncs and initializes git submodules
-- installs apt and pip dependencies
-- builds or wires supported tools into `~/bin` by default
-- installs local wrappers and launcher links
-- keeps third-party tool mirrors on tracked submodule branches
-- refreshes `nuclei` templates when the launcher is available
-
-Typical usage:
-
-```bash
-./bootstrap.sh
-```
-
-Notes:
-
-- default launcher directory: `~/bin`
-- override launcher directory: `SECKIT_BIN_DIR=/usr/local/bin ./bootstrap.sh`
-- wordlist root in this workspace: `/mnt/w/security/seckit/wordlists/`
-- existing launcher files are preserved rather than overwritten
-
-## VS Code Workflow
-
-The repo now includes a light workspace setup in `.vscode/`:
-
-- recommended extensions for shell, markdown, and yaml work
-- tasks for bootstrap, submodule sync, upstream refresh, and nuclei template refresh
-- search / watcher exclusions for generated output noise
-
-That keeps the repo more usable as a daily driver instead of just a storage tree.
-
-## Updating
-
-SecKit keeps upstream tool repos as submodules with tracked branches.
-
-Local refresh:
-
-```bash
+```sh
 git pull
 git submodule sync --recursive
 git submodule update --init --recursive
 ```
 
-Manual upstream refresh of tracked tool mirrors:
+To explicitly advance tools to their configured upstream branches:
 
-```bash
-git submodule sync --recursive
+```sh
 git submodule update --init --remote --recursive
 ```
 
-The repo also includes a scheduled GitHub Actions workflow to refresh submodule pointers automatically.
+The existing scheduled workflow also advances upstream pointers every six hours.
+That produces a moving toolkit, not a vetted release of every upstream tool.
+Review changes and third-party licenses before use. Windows GUI tools remain
+manual vendor downloads; [tool layout](tools/README.md) explains the categories.
 
-## Windows Tooling
+## Validation
 
-Still expected to live under `tools/windows/`:
+[CI](https://github.com/yacrb/seckit/actions/workflows/verify.yml) checks shell syntax,
+ShellCheck errors, executable permissions and launcher behavior. It does not
+install the complete toolkit or perform scans. The launcher test uses a harmless
+local script and covers spaces, shell characters and preservation of existing files.
 
-- `VolatilityWorkbench`
-- `EricZimmermann`
-- `FTKImager`
-- `NetworkMiner`
-
-These are intentionally left as user-managed downloads because vendor packaging and licensing change often.
-
-Large Windows symbol packs are no longer tracked in git. If you need them, fetch them on demand for the specific case you are working.
-
-## Manual Follow-Ups
-
-- download or refresh Windows-only GUI binaries in `tools/windows/`
-- if your shell does not include `~/bin`, add it to `.bashrc`, `.zshrc`, or your profile of choice
+Read [verification scope](docs/VERIFICATION.md) before interpreting a green CI run.
+Keep case evidence, packet captures, credentials and generated output outside Git.
